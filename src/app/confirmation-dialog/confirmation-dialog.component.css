@@ -1,0 +1,13 @@
+.rtl-elem .modal-header .close {
+  margin-left: -1rem;
+}
+
+.rtl-elem .modal-footer>:not(:last-child) {
+  margin-left: .25rem;
+  margin-right: 0;
+}
+
+.rtl-elem .modal-footer>:not(:first-child) {
+  margin-right: .25rem;
+  margin-left: 0;
+}

@@ -1,0 +1,152 @@
+#passengers-list {
+  list-style: none;
+  padding-right: 0;
+  float: right;
+  clear: both;
+}
+
+#total-price {
+  clear: both;
+}
+
+#passengers-list .passenger-name {
+  font-size: 1.2em;
+  transform-origin: right;
+  transition: 0.3s;
+  width: 200px;
+}
+
+#passengers-list .passenger-seat {
+  display: inline-block;
+  width: 50px;
+  font-weight: bold;
+}
+
+#passengers-list .passenger-price {
+  display: inline-block;
+  width: 50px;
+}
+
+#passengers-list .passenger {
+  float: right;
+  clear: both;
+}
+
+#passengers-list .passenger-name:hover {
+  text-shadow: #bbb 1px 1px 1px;
+}
+
+.passenger-radio:checked + .passenger-name {
+  transform: scale(1.1);
+  text-shadow: #bbb 1px 1px 1px;  
+}
+
+#flight-seats-area, #flight-details-area {
+  padding: 30px;
+}
+
+#flight-seats-list {
+  list-style: none;
+  padding: 0 20px;  
+  background: rgba(255,255,255,0.8);
+  box-shadow: rgba(255,255,255,0.8) 0 0 15px 15px;
+}
+
+#flight-seats-list .row > ul li { 
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+  margin: 2px;
+  text-align: center;
+}
+
+#flight-seats-list .row > ul {
+  list-style: none;
+  padding-left: 0;
+  height: 26px;
+}
+
+#flight-seats-list .flight-row > ul li.flight-seat {
+  border: 1px solid #777;
+  /* cursor: pointer; */
+  transition: 0.3s;
+}
+
+#flight-seats-list .flight-row > ul li.flight-seat:hover {
+  box-shadow: inset #aaa 0px 0px 5px 1px;
+}
+
+#flight-seats-list .flight-row > ul li.row-number, #flight-seats-list .title-row > ul li {
+  color: #999;
+  font-weight: bold;
+  margin: 0;
+}
+
+#flight-seats-list .flight-row > ul li.row-number {
+  vertical-align: super;
+}
+
+#flight-seats-list .row > ul li:nth-child(4) {
+  margin-right: 20px;
+}
+
+.seat-status-free {
+  cursor: pointer;
+}
+
+.seat-status-allocated-successfully {
+  background: green;
+  cursor: pointer;
+}
+
+.seat-status-allocated-successfully.taken-by-other {
+  background: lightgreen;
+  cursor: auto;
+}
+
+.seat-status-taken {
+  background: #aaa;
+  cursor: auto;
+}
+
+.seat-status-not-for-sale {
+  background: #999;
+  cursor: auto;
+}
+
+.seat-status-not-for-sale:before {
+  content: 'X';
+  color: white;
+  font-weight: bold;
+  vertical-align: super;
+}
+
+#flight-title {
+  color: #68a;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#plane-background-image {
+  transform: rotateZ(-45deg);
+  position: absolute;
+  left: -376px;
+  /* top: 64px; */
+  z-index: -1;
+  height: 113%;
+}
+
+#plane-background-image.blured {
+  filter: blur(5px);
+  opacity: 0.8;
+}
+
+#flight-seats-area {
+  text-align: center;
+}
+
+#flight-seats-area > div {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}

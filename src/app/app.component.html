@@ -1,20 +1,85 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+  </div>
+</nav> -->
 
+<div class="container row center">
+  
+  <!-- <img src="../../assets/images/Plane_icon.svg.png"> -->
+
+  <!--Flight seats-->
+  <div id="flight-seats-area" class="col-md-6">
+    <div>
+      <img id="plane-background-image" src="../../assets/images/614.png" />
+      <ul id="flight-seats-list">
+        <li class="row title-row">
+          <ul>
+            <li></li>
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+            <li>F</li>
+            <li></li>
+          </ul>
+        </li>
+
+        <li *ngFor="let row of seatsRows; let i = index" class="row flight-row">
+          <ul>
+            <li class="row-number">{{ i + 1 }}</li>
+            
+            <li *ngFor="let seat of seatsRows[i]" [id]="seat.id" class="flight-seat seat-status-{{seat.status}}" [title]="seat.text" (click)="seatClicked(seat)" 
+                [ngClass]="{ 'taken-by-other': seat.status === 'allocated-successfully' && seat.takenBy !== currPassenger.id }"></li>
+              
+            <li class="row-number">{{ i + 1 }}</li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <!--Flight details-->
+  <div id="flight-details-area" class="col-md-6 rtl-elem">
+    <h1 id="flight-title">טיסת ישראייר 704 6H</h1>
+
+    <h3>פרטי הנוסעים</h3>
+    <ul id="passengers-list" class="clearfix">
+      
+      <li *ngFor="let passenger of passengers" class="passenger" [ngClass]="{ 'checked': passenger.id === currPassenger.id }">
+        <input type="radio" class="passenger-radio" name="passenger-radio" [id]="'radio-' + passenger.id" [checked]="passenger.id === currPassenger.id" 
+          (click)="currPassenger = passenger" />
+        <label class="passenger-name" for="radio-{{passenger.id}}">{{passenger.name}}</label>
+        <span class="passenger-seat">{{passenger.seat?.id}}</span>
+        <span *ngIf="passenger.seat?.price" class="passenger-price">{{passenger.seat?.price}}$</span>
+      </li>
+
+    </ul>
+
+    <div id="total-price">
+      <label style="width: 250px">סה"כ תוספות תשלום עבור הושבה:</label>
+      <label *ngIf="totalPrice" style="width: 50px">{{ totalPrice }}$</label>
+    </div>
+
+    <div>
+      <button class="btn btn-secondary" (click)="cancelSeats()">בטל מקומות</button>
+      <button class="btn btn-primary" (click)="save()">שמור</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- <p *ngFor="let item of arrayOne(32); let i = index">
+  [<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;# "id": "{{i+1}}A", "status": "free", "text": "40$", "price": 40 _,<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;# "id": "{{i+1}}B", "status": "free", "text": "40$", "price": 40 _,<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;# "id": "{{i+1}}C", "status": "free", "text": "40$", "price": 40 _,<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;# "id": "{{i+1}}D", "status": "free", "text": "40$", "price": 40 _,<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;# "id": "{{i+1}}E", "status": "free", "text": "40$", "price": 40 _,<br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;# "id": "{{i+1}}F", "status": "free", "text": "40$", "price": 40 _<br/>
+  ],<br/>
+</p> -->
