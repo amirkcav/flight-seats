@@ -36,6 +36,30 @@
         </li>
       </ul>
     </div>
+    <div id="legend-area" class="rtl-elem">
+      <ul id="legend-list">
+        <li class="legend-item">
+          <span class="legend-status seat-status-free"></span>
+          <label>מושב פנוי</label>
+        </li>
+        <li class="legend-item">
+          <span class="legend-status seat-status-taken"></span>
+          <label>מושב תפוס</label>
+        </li>
+        <li class="legend-item">
+          <span class="legend-status seat-status-not-for-sale"></span>
+          <label>מושב שלא מוצע למכירה</label>
+        </li>
+        <li class="legend-item">
+          <span class="legend-status seat-status-allocated-successfully"></span>
+          <label>מושב תפוס לנוסע הנוכחי</label>
+        </li>
+        <li class="legend-item">
+          <span class="legend-status seat-status-allocated-successfully taken-by-other"></span>
+          <label>מושב תפוס לנוסע אחר</label>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <!--Flight details-->
@@ -63,7 +87,8 @@
     <div>
       <button class="btn btn-secondary" (click)="cancelSeats()">בטל מקומות</button>
       <button class="btn btn-primary" (click)="save()">שמור</button>
-    </div>
+    </div>      
+
   </div>
 
 </div>

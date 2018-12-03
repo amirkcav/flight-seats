@@ -206,3 +206,36 @@
   75%  {transform: scale(1.1)}
   100% {transform: scale(1)}
 }
+
+#legend-area {
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 5px;
+  float: right;
+  margin-top: 100px;
+}
+
+#legend-area .legend-status {
+  height: 22px;
+  width: 22px;
+  display: inline-block;
+  border: 1px solid #777;
+  text-align: center;
+  vertical-align: text-bottom;
+  cursor: auto;
+}
+
+#legend-list {
+  list-style: none;
+  padding-right: 0;
+  margin-bottom: 0;
+}
+
+#legend-list .legend-item + .legend-item {
+  margin-top: 5px;
+}
+
+#legend-list .legend-item > label {
+  margin-bottom: 0;
+}
+
