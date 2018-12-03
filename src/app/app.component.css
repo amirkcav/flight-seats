@@ -163,6 +163,7 @@
   box-shadow: #666 0 0 10px 0;
   min-width: 300px;
   transition: opacity 0.3s;
+  font-size: 1.3rem;
 }
 
 ::ng-deep #alerts-area ngb-alert:not(:first-child) .alert {
