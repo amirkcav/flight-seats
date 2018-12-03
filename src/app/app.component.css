@@ -66,13 +66,13 @@
   height: 26px;
 }
 
-#flight-seats-list .flight-row > ul li.flight-seat {
+#flight-seats-list .flight-row > ul li.flight-seat:not(.seat-status-missing) {
   border: 1px solid #777;
   /* cursor: pointer; */
   transition: 0.3s;
 }
 
-#flight-seats-list .flight-row > ul li.flight-seat:hover {
+#flight-seats-list .flight-row > ul li.flight-seat:not(.seat-status-missing):hover {
   box-shadow: inset #aaa 0px 0px 5px 1px;
 }
 
@@ -169,10 +169,6 @@
 ::ng-deep #alerts-area ngb-alert:not(:first-child) .alert {
   margin-top: 1rem;
 }
-
-/* ::ng-deep #alerts-area ngb-alert .alert  {
-  transition: opacity 0.3s;
-} */
 
 ::ng-deep #alerts-area ngb-alert.deleted .alert {
   opacity: 0;

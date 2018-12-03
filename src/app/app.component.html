@@ -1,14 +1,4 @@
-<!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Project name</a>
-    </div>
-  </div>
-</nav> -->
-
 <div class="container row center">
-  
-  <!-- <img src="../../assets/images/Plane_icon.svg.png"> -->
 
   <!--Flight seats-->
   <div id="flight-seats-area" class="col-md-6">
@@ -27,18 +17,23 @@
             <li></li>
           </ul>
         </li>
-
         <li *ngFor="let row of seatsRows; let i = index" class="row flight-row">
           <ul>
             <li class="row-number">{{ i + 1 }}</li>
-            
-            <li *ngFor="let seat of seatsRows[i]" [id]="seat.id" class="flight-seat seat-status-{{seat.status}}" [title]="seat.text" (click)="seatClicked(seat)" 
+            <!-- <ng-container *ngFor="let item of arrayOne(6); let j = index;">
+              <ng-template [ngIf]="seatsRows[i][j]" [ngIfElse]="empty">
+                <li [id]="seatsRows[i][j].id" class="flight-seat seat-status-{{seatsRows[i][j].status}}" [title]="seatsRows[i][j].text" (click)="seatClicked(seatsRows[i][j])" 
+                  [ngClass]="{ 'taken-by-other': seatsRows[i][j].status === 'allocated-successfully' && seatsRows[i][j].takenBy !== currPassenger.id }"></li>
+              </ng-template>
+              <ng-template #empty>
+                <li class="flight-seat-holder"></li>
+              </ng-template>
+            </ng-container> -->
+            <li *ngFor="let seat of seatsRows[i]" [id]="seat.id" class="flight-seat seat-status-{{seat.status}}" [title]="seat.status !== 'missing' ? seat.text : ''" (click)="seatClicked(seat)" 
                 [ngClass]="{ 'taken-by-other': seat.status === 'allocated-successfully' && seat.takenBy !== currPassenger.id }"></li>
-              
             <li class="row-number">{{ i + 1 }}</li>
           </ul>
         </li>
-        
       </ul>
     </div>
   </div>
