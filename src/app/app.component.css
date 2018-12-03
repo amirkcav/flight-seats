@@ -150,3 +150,62 @@
   display: inline-block;
   margin-top: 20px;
 }
+
+#alerts-area {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+::ng-deep #alerts-area .alert {
+  margin-bottom: 0;
+  box-shadow: #666 0 0 10px 0;
+  min-width: 300px;
+  transition: opacity 0.3s;
+}
+
+::ng-deep #alerts-area ngb-alert:not(:first-child) .alert {
+  margin-top: 1rem;
+}
+
+/* ::ng-deep #alerts-area ngb-alert .alert  {
+  transition: opacity 0.3s;
+} */
+
+::ng-deep #alerts-area ngb-alert.deleted .alert {
+  opacity: 0;
+}
+
+/*alerts rtl*/
+::ng-deep .rtl-elem .alert-dismissible {
+  padding-right: 1.25rem;
+  padding-left: 4rem;
+}
+::ng-deep .rtl-elem .alert-dismissible .close {
+  right: unset;
+  left: 0;
+}
+
+/* modal animation */
+::ng-deep .modal-content {
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+}
+
+/* alert animation */
+::ng-deep .alert {
+  animation-name: fadeInScale;
+  animation-duration: 0.2s;
+}
+
+@keyframes fadeIn {
+  0%   {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes fadeInScale {
+  0%   {transform: scale(0.5)}
+  75%  {transform: scale(1.1)}
+  100% {transform: scale(1)}
+}

@@ -73,6 +73,10 @@
 
 </div>
 
+<div id="alerts-area" class="rtl-elem">
+  <ngb-alert *ngFor="let alert of alerts" [type]="alert.type" (close)="close(alert)" [ngClass]="{ 'deleted': alert.deleted }">{{ alert.message }}</ngb-alert>
+</div>
+
 <!-- <p *ngFor="let item of arrayOne(32); let i = index">
   [<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;# "id": "{{i+1}}A", "status": "free", "text": "40$", "price": 40 _,<br/>

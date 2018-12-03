@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   currPassenger: Passenger;
   totalPrice: number;
   seatStatus: any = SeatStatus;
+  alerts: any[] = [];
 
   constructor(private serrvice: BackendApiService, private confirmationDialogService: ConfirmationDialogService) {
 
@@ -86,10 +87,29 @@ export class AppComponent implements OnInit {
     this.confirmationDialogService.confirm('שמירה', 'האם אתה בטוח?')
     .then((confirmed) => {
       if (confirmed) {
-        this.serrvice.save(this.passengers);
+        this.serrvice.save(this.passengers).then((res) => {
+          this.showAlert('success', 'המושבים נשמרו עבורך!');
+        });
       }
     })
     .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+
+  close(alert: any) {
+    this.alerts[this.alerts.indexOf(alert)].deleted = true;
+    setTimeout(() => {
+      this.alerts.splice(this.alerts.indexOf(alert), 1);
+    }, 300);
+  }
+
+  showAlert(type, message, autoHide = true) {
+    const alert = { 'type': type, 'message': message };
+    this.alerts.push(alert);
+    if (autoHide) {
+      setTimeout(() => {
+        this.close(alert);
+      }, 3000);
+    }
   }
 
 }
