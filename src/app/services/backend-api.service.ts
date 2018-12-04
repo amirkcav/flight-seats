@@ -22,7 +22,7 @@ export class BackendApiService {
     const url = 'http://localhost:8080/takeSeat';
     return this.http
       // .post(url, JSON.stringify(data), { headers: _headers })
-      .get(url)
+      .get(url, { params: { 'seatId': seatId } })
       .toPromise()
       .then(response => {
         return response;

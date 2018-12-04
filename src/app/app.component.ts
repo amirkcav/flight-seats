@@ -29,6 +29,9 @@ export class AppComponent implements OnInit {
       this.seatsRows = response.seatsRows;
 
       this.currPassenger = this.passengers[0];
+    })
+    .catch((err) => {
+      this.error(err);
     });
   }
 
@@ -45,6 +48,12 @@ export class AppComponent implements OnInit {
           seat.takenBy = this.currPassenger.id;
           this.updateTotalPrice();
         }
+        else {
+          this.showAlert('danger', response.message);
+        }
+      })
+      .catch((err) => {
+        this.error(err);
       });
     }
     else if (seat.status === SeatStatus.allocatedSuccessfully && seat.takenBy === this.currPassenger.id) {
@@ -89,10 +98,12 @@ export class AppComponent implements OnInit {
       if (confirmed) {
         this.serrvice.save(this.passengers).then((res) => {
           this.showAlert('success', 'המושבים נשמרו עבורך!');
+        })
+        .catch((err) => {
+          this.error(err);
         });
       }
-    })
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    });
   }
 
   close(alert: any) {
@@ -110,6 +121,11 @@ export class AppComponent implements OnInit {
         this.close(alert);
       }, 3000);
     }
+  }
+
+  error(error) {
+    console.log(error);
+    this.showAlert('danger', `אירעה שגיאה:  ${error}`);
   }
 
 }
